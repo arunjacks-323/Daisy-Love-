@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For Daisy ❤️</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    overflow:hidden;
+    font-family:Georgia,serif;
+    color:white;
+    background:
+        radial-gradient(circle at 50% 20%, #30205c 0%, #110b2b 45%, #05030f 100%);
+}
+
+/* STARS */
+
+.star{
+    position:fixed;
+    width:3px;
+    height:3px;
+    background:white;
+    border-radius:50%;
+    opacity:.7;
+    animation:twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle{
+    from{
+        opacity:.2;
+        transform:scale(.7);
+    }
+    to{
+        opacity:1;
+        transform:scale(1.5);
+    }
+}
+
+/* MAIN */
+
+.main{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    position:relative;
+    z-index:5;
+}
+
+.screen{
+    width:92%;
+    max-width:620px;
+}
+
+/* INTRO */
+
+#intro{
+    animation:fadeIn 2s ease;
+}
+
+.mini{
+    font-size:15px;
+    letter-spacing:4px;
+    color:#d9c9ff;
+    margin-bottom:20px;
+}
+
+h1{
+    font-size:48px;
+    margin-bottom:20px;
+    text-shadow:
+        0 0 10px #bda4ff,
+        0 0 30px #8d5cff;
+}
+
+.introText{
+    font-size:19px;
+    line-height:1.8;
+    color:#eee8ff;
+    margin-bottom:30px;
+}
+
+.openBtn{
+    border:none;
+    padding:15px 30px;
+    border-radius:50px;
+    background:linear-gradient(135deg,#ffffff,#e7d9ff);
+    color:#32135d;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 0 30px rgba(210,180,255,.5);
+    transition:.3s;
+}
+
+.openBtn:hover{
+    transform:scale(1.08);
+}
+
+/* ENVELOPE */
+
+#letter{
+    display:none;
+}
+
+.envelope{
+    width:260px;
+    height:175px;
+    background:#f5e7ff;
+    margin:0 auto 30px;
+    position:relative;
+    border-radius:8px;
+    box-shadow:0 0 35px rgba(200,150,255,.4);
+    cursor:pointer;
+    transition:1s;
+}
+
+.envelope:before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    border-left:130px solid transparent;
+    border-right:130px solid transparent;
+    border-top:95px solid #d8bfff;
+    z-index:3;
+}
+
+.envelope:after{
+    content:"❤️";
+    position:absolute;
+    left:50%;
+    top:62px;
+    transform:translateX(-50%);
+    font-size:35px;
+    z-index:5;
+}
+
+.envelope.open{
+    transform:translateY(-20px) scale(1.05);
+    opacity:0;
+}
+
+.tap{
+    font-size:17px;
+    color:#ddd0ff;
+    animation:pulse 1.5s infinite;
+}
+
+/* MESSAGE */
+
+#message{
+    display:none;
+    animation:messageIn 2s ease;
+}
+
+.heart{
+    font-size:70px;
+    animation:heartbeat 1.2s infinite;
+    margin-bottom:10px;
+}
+
+.daisy{
+    font-size:54px;
+    color:#f2ddff;
+    text-shadow:
+        0 0 15px #c99aff,
+        0 0 40px #8e5cff;
+    margin-bottom:18px;
+}
+
+/* I LOVE YOU */
+
+.loveYou{
+    font-family:Arial,sans-serif;
+    font-size:42px;
+    font-weight:bold;
+    letter-spacing:4px;
+    color:#ffb7e5;
+    margin:15px 0 25px;
+
+    text-shadow:
+        0 0 10px #ff4db8,
+        0 0 25px #ff1493,
+        0 0 45px #ff1493;
+
+    animation:loveGlow 1.5s infinite alternate;
+}
+
+.line{
+    font-size:19px;
+    line-height:2;
+    color:#f5efff;
+    min-height:140px;
+}
+
+.final{
+    display:none;
+    margin-top:25px;
+    font-size:18px;
+    color:#d9c4ff;
+    line-height:1.8;
+    animation:fadeIn 2s ease;
+}
+
+.signature{
+    margin-top:25px;
+    font-size:18px;
+    font-style:italic;
+    color:#eee0ff;
+}
+
+/* FLOATING HEARTS */
+
+.floatHeart{
+    position:fixed;
+    bottom:-40px;
+    z-index:2;
+    animation:floatUp linear forwards;
+    pointer-events:none;
+}
+
+@keyframes floatUp{
+
+    from{
+        transform:translateY(0) scale(.7);
+        opacity:0;
+    }
+
+    15%{
+        opacity:1;
+    }
+
+    to{
+        transform:translateY(-110vh) scale(1.4);
+        opacity:0;
+    }
+}
+
+@keyframes heartbeat{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.25);
+    }
+}
+
+@keyframes loveGlow{
+
+    from{
+        transform:scale(1);
+        text-shadow:
+            0 0 10px #ff4db8,
+            0 0 20px #ff1493;
+    }
+
+    to{
+        transform:scale(1.08);
+        text-shadow:
+            0 0 15px white,
+            0 0 35px #ff1493,
+            0 0 60px #ff4db8;
+    }
+}
+
+@keyframes pulse{
+
+    0%,100%{
+        opacity:.5;
+    }
+
+    50%{
+        opacity:1;
+    }
+}
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes messageIn{
+
+    from{
+        opacity:0;
+        transform:scale(.8);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+@media(max-width:500px){
+
+    h1{
+        font-size:36px;
+    }
+
+    .daisy{
+        font-size:42px;
+    }
+
+    .loveYou{
+        font-size:30px;
+        letter-spacing:2px;
+    }
+
+    .line{
+        font-size:17px;
+    }
+
+    .envelope{
+        width:220px;
+        height:150px;
+    }
+
+    .envelope:before{
+        border-left-width:110px;
+        border-right-width:110px;
+        border-top-width:80px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<script>
+
+for(let i=0;i<100;i++){
+
+    const star=document.createElement("div");
+
+    star.className="star";
+
+    star.style.left=Math.random()*100+"vw";
+    star.style.top=Math.random()*100+"vh";
+
+    star.style.animationDelay=Math.random()*3+"s";
+
+    document.body.appendChild(star);
+
+}
+
+</script>
+
+
+<div class="main">
+
+<div class="screen">
+
+<!-- FIRST SCREEN -->
+
+<div id="intro">
+
+<div class="mini">
+A SECRET MESSAGE ✨
+</div>
+
+<h1>
+For Daisy 🌙
+</h1>
+
+<p class="introText">
+
+Not everything needs to be said loudly...<br>
+Some feelings are better kept<br>
+inside a little secret. 💌
+
+</p>
+
+<button class="openBtn" onclick="startLetter()">
+Open The Secret 💌
+</button>
+
+</div>
+
+
+<!-- LETTER -->
+
+<div id="letter">
+
+<div class="envelope" id="envelope" onclick="openEnvelope()">
+</div>
+
+<div class="tap">
+Tap the letter ❤️
+</div>
+
+</div>
+
+
+<!-- FINAL MESSAGE -->
+
+<div id="message">
+
+<div class="heart">
+❤️
+</div>
+
+<div class="daisy">
+Daisy
+</div>
+
+<div class="loveYou">
+I LOVE YOU ❤️
+</div>
+
+<div class="line" id="typedText"></div>
+
+<div class="final" id="finalText">
+
+Some feelings don't need a reason...<br>
+They just live quietly in the heart. ❤️<br><br>
+
+And if you ever wonder what<br>
+this little website means...
+
+<div class="loveYou">
+I LOVE YOU DAISY ❤️
+</div>
+
+<div class="signature">
+
+This little secret was made<br>
+especially for you. 🌙✨<br><br>
+
+— Arun ❤️
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* SHOW LETTER */
+
+function startLetter(){
+
+    document.getElementById("intro").style.display="none";
+
+    document.getElementById("letter").style.display="block";
+
+}
+
+
+/* OPEN LETTER */
+
+function openEnvelope(){
+
+    const envelope=document.getElementById("envelope");
+
+    envelope.classList.add("open");
+
+    setTimeout(()=>{
+
+        document.getElementById("letter").style.display="none";
+
+        document.getElementById("message").style.display="block";
+
+        startTyping();
+
+        createHearts();
+
+    },900);
+
+}
+
+
+/* TYPEWRITER */
+
+function startTyping(){
+
+    const text =
+    "Daisy... ❤️\n\n" +
+    "There is something I wanted to leave here...\n" +
+    "not because I couldn't say it,\n" +
+    "but because I wanted you to discover it.\n\n" +
+    "You are genuinely special to me.";
+
+    const element=document.getElementById("typedText");
+
+    let i=0;
+
+    function type(){
+
+        if(i<text.length){
+
+            if(text[i]==="\n"){
+
+                element.innerHTML += "<br>";
+
+            }else{
+
+                element.innerHTML += text[i];
+
+            }
+
+            i++;
+
+            setTimeout(type,45);
+
+        }else{
+
+            setTimeout(()=>{
+
+                document.getElementById("finalText").style.display="block";
+
+            },1200);
+
+        }
+
+    }
+
+    type();
+
+}
+
+
+/* FLOATING HEARTS */
+
+function createHearts(){
+
+    const symbols=[
+        "❤️",
+        "💜",
+        "💖",
+        "💕",
+        "💗",
+        "💓",
+        "💘",
+        "✨"
+    ];
+
+    for(let i=0;i<40;i++){
+
+        const heart=document.createElement("div");
+
+        heart.className="floatHeart";
+
+        heart.innerHTML=
+            symbols[Math.floor(Math.random()*symbols.length)];
+
+        heart.style.left=
+            Math.random()*100+"vw";
+
+        heart.style.fontSize=
+            (15+Math.random()*28)+"px";
+
+        heart.style.animationDuration=
+            (5+Math.random()*6)+"s";
+
+        heart.style.animationDelay=
+            Math.random()*4+"s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(()=>{
+
+            heart.remove();
+
+        },13000);
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
